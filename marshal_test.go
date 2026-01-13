@@ -3,8 +3,8 @@ package yaml_test
 import (
 	"testing"
 
+	"github.com/ayuxsec/yaml.v3-fork"
 	"github.com/stretchr/testify/require"
-	"gopkg.in/yaml.v3"
 )
 
 type exampleStruct struct {

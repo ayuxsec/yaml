@@ -1,10 +1,11 @@
-module gopkg.in/yaml.v3
+module github.com/ayuxsec/yaml.v3-fork
 
 go 1.25.5
 
 require (
 	github.com/stretchr/testify v1.11.1
 	gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
