@@ -8,9 +8,9 @@ import (
 )
 
 type exampleStruct struct {
-	Name  string `yaml:"name"`
-	Age   int    `yaml:"age"`
-	Place string `yaml:"place"`
+	Name  string `yaml:"name" yaml_line_comment:"your name"`
+	Age   int    `yaml:"age" yaml_line_comment:"your age"`
+	Place string `yaml:"place" yaml_line_comment:"your location"`
 }
 
 func TestMarshalStruct(t *testing.T) {

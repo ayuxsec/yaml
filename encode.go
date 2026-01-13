@@ -29,12 +29,13 @@ import (
 )
 
 type encoder struct {
-	emitter  yaml_emitter_t
-	event    yaml_event_t
-	out      []byte
-	flow     bool
-	indent   int
-	doneInit bool
+	emitter            yaml_emitter_t
+	event              yaml_event_t
+	out                []byte
+	flow               bool
+	indent             int
+	doneInit           bool
+	pendingLineComment string
 }
 
 func newEncoder() *encoder {
@@ -232,7 +233,9 @@ func (e *encoder) structv(tag string, in reflect.Value) {
 			}
 			e.marshal("", reflect.ValueOf(info.Key))
 			e.flow = info.Flow
+			e.pendingLineComment = info.LineComment
 			e.marshal("", value)
+			e.pendingLineComment = ""
 		}
 		if sinfo.InlineMap >= 0 {
 			m := in.Field(sinfo.InlineMap)
@@ -418,6 +421,9 @@ func (e *encoder) emitScalar(value, anchor, tag string, style yaml_scalar_style_
 		tag = longTag(tag)
 	}
 	e.must(yaml_scalar_event_initialize(&e.event, []byte(anchor), []byte(tag), []byte(value), implicit, implicit, style))
+	if e.pendingLineComment != "" {
+		line = []byte(e.pendingLineComment)
+	}
 	e.event.head_comment = head
 	e.event.line_comment = line
 	e.event.foot_comment = foot
