@@ -1,3 +1,27 @@
+## Usage (This Fork):
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/ayuxsec/yaml" // go get github.com/ayuxsec/yaml
+)
+
+func main() {
+	type person struct {
+		Name string `yaml:"name" yaml_line_comment:"your name here"`
+	}
+
+	data, _ := yaml.Marshal(person{
+		Name: "spike",
+	})
+
+	fmt.Print(string(data)) // name: spike # your name here
+}
+```
+
 # THIS PROJECT IS UNMAINTAINED
 
 This was one of my first Go projects, bootstapped over the christmas break of 2010 and well maintained for over a decade, often with help from contributors. Sadly, in the last few years my own free time, both personal and professional, became less common, and none of the contributions turned into more extensive long term engagements. I was hoping to address the situation by moving it into a dedicated professional team at a more resourceful home such as Canonical, Google, etc, but that hasn't materialized in time either.  So I'm now taking the more explicit action of clearly labeling the project as unmaintained, to inform the community of what should already be obvious by now.
