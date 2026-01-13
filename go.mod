@@ -1,4 +1,4 @@
-module github.com/ayuxsec/yaml.v3-fork
+module github.com/ayuxsec/yaml
 
 go 1.25.5
 

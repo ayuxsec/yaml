@@ -3,7 +3,7 @@ package yaml_test
 import (
 	"testing"
 
-	"github.com/ayuxsec/yaml.v3-fork"
+	"github.com/ayuxsec/yaml"
 	"github.com/stretchr/testify/require"
 )
 
