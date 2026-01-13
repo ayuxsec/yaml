@@ -7,14 +7,14 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-type ExampleStruct struct {
+type exampleStruct struct {
 	Name  string `yaml:"name"`
 	Age   int    `yaml:"age"`
 	Place string `yaml:"place"`
 }
 
 func TestMarshalStruct(t *testing.T) {
-	var exampleStruct = ExampleStruct{
+	var exampleStruct = exampleStruct{
 		Name:  "spike spiegel",
 		Age:   27,
 		Place: "space",
